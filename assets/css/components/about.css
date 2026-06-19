@@ -1,0 +1,455 @@
+/* ============================================
+   ABOUT SECTION — Iconic Profile + Timeline (boxless)
+   ============================================ */
+.about-section {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+/* ---- LEFT: Profile card (matches reference) ---- */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 110px;
+    padding: 34px 30px 30px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, #fdfbf7, #f7f3ec);
+    border: 1px solid rgba(197, 160, 89, 0.16);
+    box-shadow: 0 30px 70px rgba(74, 60, 38, 0.08);
+}
+
+/* Circular photo with decorative ring */
+.profile-photo {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 52px;
+    aspect-ratio: 1;
+    /* scroll reveal */
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section.visible .profile-photo {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.profile-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.profile-photo img {
+    position: absolute;
+    inset: 9%;
+    width: 82%;
+    height: 82%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    background: #fff;
+    z-index: 2;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-card:hover .profile-photo img { transform: scale(1.03); }
+
+/* "Available for work" — dark pill overlapping the photo bottom */
+.profile-status {
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    background: #1a1714;
+    padding: 10px 20px;
+    border-radius: 100px;
+    box-shadow: 0 12px 28px rgba(26, 23, 20, 0.28);
+}
+
+.status-dot {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+}
+
+.status-dot::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px solid var(--green);
+    opacity: 0.5;
+    animation: statusPulse 2.4s ease-out infinite;
+}
+
+@keyframes statusPulse {
+    0%   { transform: scale(0.6); opacity: 0.6; }
+    100% { transform: scale(1.7); opacity: 0; }
+}
+
+.status-text {
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Identity text */
+.profile-hi {
+    font-size: 1rem;
+    color: #6b6258;
+    margin-bottom: 4px;
+}
+
+.profile-hi .wave {
+    display: inline-block;
+    animation: wave 2.4s ease-in-out infinite;
+    transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    10%, 30%      { transform: rotate(16deg); }
+    20%, 40%      { transform: rotate(-12deg); }
+}
+
+.profile-name {
+    font-size: clamp(2.2rem, 2.8vw, 2.7rem);
+    line-height: 1.05;
+    color: #1a1714;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.profile-role {
+    font-size: 1.04rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.profile-divider {
+    display: block;
+    width: 64px;
+    height: 2px;
+    background: var(--accent-color);
+    margin-bottom: 26px;
+}
+
+.profile-socials {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+/* Rounded-square social buttons */
+.profile-social {
+    width: 52px;
+    height: 52px;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a443c;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    transition: var(--transition);
+}
+
+.profile-social:hover {
+    color: #fff;
+    background: #1a1714;
+    border-color: #1a1714;
+    transform: translateY(-3px);
+}
+
+/* CTA — full-width dark pill with top-right arrow */
+.profile-cta {
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #1a1714;
+    color: #fff;
+    padding: 17px 24px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.profile-cta:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(197, 160, 89, 0.34);
+}
+
+.profile-cta svg {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-cta:hover svg { transform: translate(3px, -3px); }
+
+/* ---- RIGHT: Content blocks ---- */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+.block-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+/* Small circular icon badge — the one tasteful "container" we keep */
+.block-badge {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    background: rgba(197, 160, 89, 0.10);
+    border: 1px solid rgba(197, 160, 89, 0.22);
+    transition: var(--transition);
+}
+
+.about-block:hover .block-badge {
+    background: var(--accent-color);
+    color: #fff;
+    transform: translateY(-2px) rotate(-4deg);
+}
+
+.block-head h4 {
+    font-size: 1.5rem;
+    color: #1a1714;
+}
+
+.about-para {
+    font-size: 1.12rem;
+    color: #4a443c;
+    line-height: 1.75;
+    max-width: 62ch;
+    padding-left: 64px;
+}
+
+/* ---- Skills — minimal outlined chips with logos ---- */
+.skill-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    padding: 0 0 0 64px;
+}
+
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #3d362d;
+    padding: 9px 18px 9px 14px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 100px;
+    background: transparent;
+    cursor: default;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(14px);
+}
+
+.skill-tag img,
+.skill-tag .skill-ic {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.skill-tag .skill-ic { color: var(--accent-color); }
+
+section.visible .skill-tag { opacity: 1; transform: translateY(0); }
+
+.skill-tag:nth-child(1)  { transition-delay: 0.05s; }
+.skill-tag:nth-child(2)  { transition-delay: 0.10s; }
+.skill-tag:nth-child(3)  { transition-delay: 0.15s; }
+.skill-tag:nth-child(4)  { transition-delay: 0.20s; }
+.skill-tag:nth-child(5)  { transition-delay: 0.25s; }
+.skill-tag:nth-child(6)  { transition-delay: 0.30s; }
+.skill-tag:nth-child(7)  { transition-delay: 0.35s; }
+.skill-tag:nth-child(8)  { transition-delay: 0.40s; }
+.skill-tag:nth-child(9)  { transition-delay: 0.45s; }
+
+.skill-tag:hover {
+    color: #1a1714;
+    border-color: var(--accent-color);
+    background: rgba(197, 160, 89, 0.07);
+    transform: translateY(-3px);
+}
+
+/* ---- Experience / Education — open timeline ---- */
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 64px;
+    position: relative;
+}
+
+/* Rail aligned through the timeline icon centers */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 86px;
+    top: 18px;
+    bottom: 18px;
+    width: 1px;
+    background: linear-gradient(to bottom,
+        rgba(197, 160, 89, 0.5),
+        rgba(197, 160, 89, 0.12));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+section.visible .timeline::before { transform: scaleY(1); }
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.12);
+    opacity: 0;
+    transform: translateX(18px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+section.visible .timeline-item { opacity: 1; transform: translateX(0); }
+section.visible .timeline-item:nth-child(1) { transition-delay: 0.30s; }
+section.visible .timeline-item:nth-child(2) { transition-delay: 0.45s; }
+section.visible .timeline-item:nth-child(3) { transition-delay: 0.60s; }
+section.visible .timeline-item:nth-child(4) { transition-delay: 0.75s; }
+
+/* Circular icon node sitting on the rail */
+.timeline-icon {
+    position: relative;
+    z-index: 1;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    background: var(--bg-color);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-icon {
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(197, 160, 89, 0.25);
+}
+
+.timeline-body { flex: 1; min-width: 0; }
+
+.timeline-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 3px;
+}
+
+.timeline-role {
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #1a1714;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-weight: 400;
+    transition: color 0.35s ease;
+}
+
+.timeline-item:hover .timeline-role { color: var(--accent-color); }
+
+.timeline-year {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+}
+
+.timeline-company {
+    font-size: 0.95rem;
+    color: #6b6258;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+    .about-section {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .profile-card { max-width: 400px; position: static; margin: 0 auto; }
+
+    .about-para,
+    .skill-tags,
+    .timeline { padding-left: 0; }
+
+    .timeline::before { left: 22px; }
+}
+
+@media (max-width: 640px) {
+    .about-para { font-size: 1.04rem; }
+    .block-head h4 { font-size: 1.3rem; }
+    .timeline-head { flex-direction: column; gap: 2px; }
+    .timeline-icon { width: 42px; height: 42px; }
+    .timeline::before { left: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-photo,
+    .profile-hi .wave,
+    .skill-tag,
+    .timeline-item {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    .timeline::before { transform: scaleY(1) !important; }
+}

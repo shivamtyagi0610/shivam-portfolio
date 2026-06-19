@@ -1,459 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivam Tyagi — Software Engineer</title>
-    <meta name="description" content="Software Engineer specializing in Flutter & Dart, currently contributing to MySA — an AI-Personal assistant product.">
-    
+    <meta name="description"
+        content="Software Engineer specializing in Flutter & Dart, currently contributing to MySA — an AI-Personal assistant product.">
+
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Shivam Tyagi — Software Engineer">
-    <meta property="og:description" content="Software Engineer specializing in Flutter & Dart, building impactful, production-ready mobile applications.">
-    <meta property="og:image" content="assets/images/profile.png">
+    <meta property="og:description"
+        content="Software Engineer specializing in Flutter & Dart, building impactful, production-ready mobile applications.">
+    <meta property="og:image" content="assets/images/ic_profile.jpg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
 
-    <!-- Stylesheet -->
+    <!-- Stylesheet (imports per-component CSS files) -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
-    <!-- ============================
-         NAVBAR
-         ============================ -->
-    <nav id="navbar">
-        <div class="nav-logo serif">Shivam Tyagi</div>
-        
-        <div class="nav-links" id="navLinks">
-            <a href="#home" class="active">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#about">About</a>
-            <a href="#skills">Services</a>
-            <a href="#contact">Contact</a>
-        </div>
+    <!-- ============================================================
+         Component placeholders. Each <div data-component="..."> is
+         replaced at runtime by assets/js/main.js using the matching
+         HTML fragment at assets/js/components/<name>/<name>.html.
+         ============================================================ -->
 
-        <div class="nav-actions">
-            <button class="btn-pill btn-dark" onclick="location.href='#contact'">↗ Get In Touch</button>
-        </div>
-        
-        <!-- Mobile Hamburger Toggle -->
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+    <div data-component="navbar"></div>
 
     <main>
-        <!-- ============================
-             HERO SECTION
-             ============================ -->
-        <section id="home" class="hero visible">
-            <div class="hero-content" id="heroContent">
-                <div class="badge-available">
-                    <span class="dot"></span>
-                    Available for Work
-                </div>
-                <h1 class="hero-title">
-                    I'm Shivam <br>
-                    <span class="accent">Software Engineer</span>
-                </h1>
-                <p class="hero-subtext">
-                    Software Engineer specializing in Flutter & Dart, currently contributing to MySA — an AI-Personal assistant product. MCA graduate with a growth mindset, focused on building impactful, production-ready mobile applications.
-                </p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn-pill btn-dark">↗ See My Projects</a>
-                    <a href="Shivam_Resume_2026.pdf" download="Shivam_Tyagi_Resume_2026.pdf" class="btn-pill btn-outline">→ Download Resume</a>
-                </div>
-            </div>
-
-            <div class="hero-stage" id="heroVisual">
-                <div class="sk-stage">
-                    <!-- Background Grid -->
-                    <div class="sk-grid"></div>
-
-                    <!-- Corner Brackets -->
-                    <div class="sk-bracket sk-top-left"></div>
-                    <div class="sk-bracket sk-top-right"></div>
-                    <div class="sk-bracket sk-bottom-left"></div>
-                    <div class="sk-bracket sk-bottom-right"></div>
-
-                    <!-- Rotating Rings -->
-                    <div class="sk-ring sk-ring-1"></div>
-                    <div class="sk-ring sk-ring-2"></div>
-
-                    <!-- Center Text -->
-                    <div class="sk-center">
-                        <h2 class="serif">Shi<span class="sk-accent">vam</span></h2>
-                        <p class="sk-role"><span class="sk-line"></span>SOFTWARE ENGINEER<span class="sk-line"></span></p>
-                    </div>
-
-                    <!-- Orbit Labels -->
-                    <!-- TOP -->
-                    <div class="sk-orbit sk-top float-up">
-                        <div class="sk-val serif">1<span class="sk-plus">+</span></div>
-                        <div class="sk-desc">YEARS EXPERIENCE</div>
-                        <div class="sk-v-line"></div>
-                    </div>
-
-                    <!-- RIGHT -->
-                    <div class="sk-orbit sk-right float-right">
-                        <div class="sk-h-line"></div>
-                        <div class="sk-text-wrap">
-                            <div class="sk-val-sm">MySA AI</div>
-                            <div class="sk-desc-sm">IN DEVELOPMENT</div>
-                        </div>
-                    </div>
-
-                    <!-- BOTTOM -->
-                    <div class="sk-orbit sk-bottom float-down">
-                        <div class="sk-v-line-rev"></div>
-                        <div class="sk-skills">
-                            <span class="sk-skill-item">Flutter</span>
-                            <span class="sk-skill-item">Dart</span>
-                            <span class="sk-skill-item">Java</span>
-                            <span class="sk-skill-item">Cloud</span>
-                        </div>
-                    </div>
-
-                    <!-- LEFT -->
-                    <div class="sk-orbit sk-left float-left">
-                        <div class="sk-available">
-                            <span class="sk-dot-green"></span>
-                            <div class="sk-text-wrap">
-                                <div class="sk-val-sm">Available</div>
-                                <div class="sk-desc-sm">GURUGRAM, INDIA</div>
-                            </div>
-                        </div>
-                        <div class="sk-h-line-rev"></div>
-                    </div>
-
-                    <!-- Cycling Skill Text -->
-                    <div class="sk-cycle" id="heroCycleText">FLUTTER DEVELOPER</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             SKILLS MARQUEE SECTION
-             ============================ -->
-        <section class="skills-marquee-section">
-            <h2 class="sk-heading">My <span class="accent-sk">Skills</span> & Tech Stack</h2>
-            
-            <div class="sk-container">
-                <div class="sk-track">
-                    <!-- Skills List -->
-                    <div class="sk-card"><span class="sk-icon">📱</span><span class="sk-label">Flutter</span></div>
-                    <div class="sk-card"><span class="sk-icon">🎯</span><span class="sk-label">Dart</span></div>
-                    <div class="sk-card"><span class="sk-icon">☕</span><span class="sk-label">Java</span></div>
-                    <div class="sk-card"><span class="sk-icon">🤖</span><span class="sk-label">MySA AI</span></div>
-                    <div class="sk-card"><span class="sk-icon">☁️</span><span class="sk-label">Cloud Computing</span></div>
-                    <div class="sk-card"><span class="sk-icon">🔐</span><span class="sk-label">Cyber Security</span></div>
-                    <div class="sk-card"><span class="sk-icon">🗄️</span><span class="sk-label">Database Management</span></div>
-                    <div class="sk-card"><span class="sk-icon">📲</span><span class="sk-label">Android Development</span></div>
-                    <div class="sk-card"><span class="sk-icon">🏗️</span><span class="sk-label">Computer Architecture</span></div>
-                    <div class="sk-card"><span class="sk-icon">🔬</span><span class="sk-label">AI & ML</span></div>
-                    <div class="sk-card"><span class="sk-icon">🧩</span><span class="sk-label">Firebase</span></div>
-                    <div class="sk-card"><span class="sk-icon">🔧</span><span class="sk-label">Git & GitHub</span></div>
-                    
-                    <!-- Duplicated for seamless loop -->
-                    <div class="sk-card"><span class="sk-icon">📱</span><span class="sk-label">Flutter</span></div>
-                    <div class="sk-card"><span class="sk-icon">🎯</span><span class="sk-label">Dart</span></div>
-                    <div class="sk-card"><span class="sk-icon">☕</span><span class="sk-label">Java</span></div>
-                    <div class="sk-card"><span class="sk-icon">🤖</span><span class="sk-label">MySA AI</span></div>
-                    <div class="sk-card"><span class="sk-icon">☁️</span><span class="sk-label">Cloud Computing</span></div>
-                    <div class="sk-card"><span class="sk-icon">🔐</span><span class="sk-label">Cyber Security</span></div>
-                    <div class="sk-card"><span class="sk-icon">🗄️</span><span class="sk-label">Database Management</span></div>
-                    <div class="sk-card"><span class="sk-icon">📲</span><span class="sk-label">Android Development</span></div>
-                    <div class="sk-card"><span class="sk-icon">🏗️</span><span class="sk-label">Computer Architecture</span></div>
-                    <div class="sk-card"><span class="sk-icon">🔬</span><span class="sk-label">AI & ML</span></div>
-                    <div class="sk-card"><span class="sk-icon">🧩</span><span class="sk-label">Firebase</span></div>
-                    <div class="sk-card"><span class="sk-icon">🔧</span><span class="sk-label">Git & GitHub</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             PROJECTS SECTION
-             ============================ -->
-        <section id="projects">
-            <span class="section-tag">Projects</span>
-            <h2 class="section-heading">Things I've Built & Shipped</h2>
-            
-            <div class="projects-grid">
-                <!-- Project 1: MySA AI -->
-                <div class="project-card">
-                    <span class="project-label">AI Product</span>
-                    <h3 class="project-name serif">MySA — AI Personal Assistant</h3>
-                    <p class="project-description">Actively developing and maintaining MySA, an AI-Personal assistant product. Building responsive, production-ready UI components and integrating AI-driven features into the mobile application.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">AI</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Cards21 -->
-                <div class="project-card">
-                    <span class="project-label">Game Dev</span>
-                    <h3 class="project-name serif">Cards21 — Card Game</h3>
-                    <p class="project-description">A feature-rich card game built with LibGDX framework, featuring dynamic gameplay mechanics, a 3-life system, Bonus Combo rewards, and REST API integration for real-time server data.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">LibGDX</span>
-                            <span class="tech-tag">Scene2D</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <!-- Project 3: University Management System -->
-                <div class="project-card">
-                    <span class="project-label">Desktop App</span>
-                    <h3 class="project-name serif">University Management System</h3>
-                    <p class="project-description">A comprehensive application to manage student and faculty information with CRUD operations, MySQL database backend, and an intuitive Java Swing GUI for seamless data management.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">Swing</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <a href="https://github.com/shivamtyagi0610" class="project-link" target="_blank">GitHub Repo →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             ABOUT SECTION
-             ============================ -->
-        <section id="about">
-            <div class="about-section">
-                <div class="about-visual">
-                    <div class="about-image-card">
-                        <img src="assets/images/profile.png" alt="Shivam Tyagi">
-                    </div>
-                </div>
-                <div class="about-content">
-                    <span class="section-tag">About Me</span>
-                    <p class="about-para">
-                        I'm Shivam Tyagi, a Software Engineer at Witzeal Technologies Private Limited. I hold an MCA from SRM Institute of Science and Technology (9.34 CGPA) and specialize in Flutter & Dart-based mobile development. I'm currently building MySA — an AI-Personal assistant product, focused on delivering impactful, production-ready mobile applications.
-                    </p>
-
-                    <!-- Quick Highlights Row -->
-                    <div class="about-highlights">
-                        <div class="h-item">
-                            <span class="h-label">EXPERIENCE</span>
-                            <span class="h-val serif">1+ Year</span>
-                        </div>
-                        <div class="h-item">
-                            <span class="h-label">ACADEMIC</span>
-                            <span class="h-val serif">9.34 CGPA</span>
-                        </div>
-                        <div class="h-item">
-                            <span class="h-label">SPECIALIZED</span>
-                            <span class="h-val serif">AI Product</span>
-                        </div>
-                    </div>
-
-                    <!-- Professional Journey -->
-                    <div class="journey-container">
-                        <h3 class="journey-title serif">Professional Journey</h3>
-                        
-                        <div class="experience-timeline">
-                            <div class="timeline-item">
-                                <div class="exp-header">
-                                    <h4 class="exp-role">Software Engineer</h4>
-                                    <span class="exp-year">Jan 2026 – Present</span>
-                                </div>
-                                <div class="exp-company">Witzeal Technologies Pvt. Ltd.</div>
-                                <p class="exp-desc">Actively developing and maintaining MySA, an AI-Personal assistant product using Flutter & Dart. Building responsive UI components and integrating AI-driven features. Collaborating on full product development cycles including feature implementation and testing.</p>
-                            </div>
-
-                            <div class="timeline-item">
-                                <div class="exp-header">
-                                    <h4 class="exp-role">Software Engineer Trainee</h4>
-                                    <span class="exp-year">Jul 2025 – Jan 2026</span>
-                                </div>
-                                <div class="exp-company">Witzeal Technologies Pvt. Ltd.</div>
-                                <p class="exp-desc">Developed Cards21, a fully functional card game with LibGDX in Java. Simultaneously contributed to MySA AI assistant, gaining hands-on Flutter & Dart experience. Demonstrated fast learning by transitioning from game to mobile development within the same period.</p>
-                            </div>
-                        </div>
-
-                        <!-- Education Upgrade -->
-                        <div class="education-highlight">
-                            <div class="edu-icon">🎓</div>
-                            <div class="edu-details">
-                                <h4 class="edu-degree serif">Master of Computer Applications</h4>
-                                <p class="edu-school">SRM Institute of Science and Technology • 2025</p>
-                            </div>
-                            <div class="edu-grade">9.34 CGPA</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             SERVICES SECTION
-             ============================ -->
-        <section id="skills">
-            <span class="section-tag">What I Do</span>
-            <h2 class="section-heading">Crafting Digital Products with Purpose</h2>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="service-icon">📱</span>
-                    <h3 class="service-title">Flutter & Mobile Development</h3>
-                    <p class="service-desc">Building high-performance, production-ready cross-platform mobile applications using Flutter and Dart for Android.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🎮</span>
-                    <h3 class="service-title">Game Development</h3>
-                    <p class="service-desc">Crafting interactive game experiences using Java, LibGDX framework, and Scene2D for rich UI scenes and gameplay mechanics.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🌐</span>
-                    <h3 class="service-title">Frontend Web Development</h3>
-                    <p class="service-desc">Creating responsive web interfaces with HTML, CSS, JavaScript, and React.js for modern, interactive user experiences.</p>
-                </div>
-                <div class="service-card">
-                    <span class="service-icon">🗄️</span>
-                    <h3 class="service-title">Backend & Database Systems</h3>
-                    <p class="service-desc">Developing robust backends with Java and PHP, managing databases with MySQL and SQL, and building desktop apps with Java Swing.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             PROCESS SECTION
-             ============================ -->
-        <section id="process">
-            <span class="section-tag">Process</span>
-            <h2 class="section-heading">How I Work</h2>
-            
-            <div class="process-grid">
-                <div class="process-step">
-                    <span class="step-number">01</span>
-                    <h3 class="step-title">Discovery</h3>
-                    <p class="step-desc">Understanding the project goals, requirements, and technical scope.</p>
-                </div>
-                <div class="process-step">
-                    <span class="step-number">02</span>
-                    <h3 class="step-title">Design & Plan</h3>
-                    <p class="step-desc">Architecting the solution, selecting tech stack, wireframing the approach.</p>
-                </div>
-                <div class="process-step">
-                    <span class="step-number">03</span>
-                    <h3 class="step-title">Build & Develop</h3>
-                    <p class="step-desc">Writing clean, scalable code with regular progress updates.</p>
-                </div>
-                <div class="process-step">
-                    <span class="step-number">04</span>
-                    <h3 class="step-title">Test & Deliver</h3>
-                    <p class="step-desc">Thorough testing, deployment, and handover with documentation.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             CONTACT SECTION
-             ============================ -->
-        <section id="contact" class="contact-section">
-            <div class="contact-container">
-                <h2 class="contact-heading serif">Let's Build Something Together</h2>
-                <p class="contact-subtext">Open to full-time opportunities, freelance projects, and collaborations.</p>
-                
-                <div class="contact-pills">
-                    <div class="contact-pill">📧 shivamtyagi8179@gmail.com</div>
-                    <div class="contact-pill">📞 +91-7906134199</div>
-                    <div class="contact-pill">📍 India</div>
-                </div>
-
-                <a href="mailto:shivamtyagi8179@gmail.com" class="btn-gold">↗ Send Me an Email</a>
-
-                <div class="social-row">
-                    <a href="https://github.com/shivamtyagi0610" class="social-link" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/shivam-tyagi-96973a2b9" class="social-link" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-        </section>
+        <div data-component="hero"></div>
+        <div data-component="skills-marquee"></div>
+        <div data-component="ai-intelligence"></div>
+        <div data-component="projects"></div>
+        <div data-component="about"></div>
+        <div data-component="services"></div>
+        <div data-component="process"></div>
+        <div data-component="contact"></div>
     </main>
 
-    <!-- ============================
-         FOOTER — Premium Dark
-         ============================ -->
-    <footer>
-        <div class="footer-content">
-            <!-- Top Row -->
-            <div class="footer-header">
-                <div class="footer-brand">
-                    <h2 class="serif">Shivam Tyagi</h2>
-                    <p class="footer-tagline">Software Engineer · Flutter · AI · Cloud</p>
-                </div>
-                <a href="#contact" class="footer-cta-btn">↗ Get In Touch</a>
-            </div>
+    <div data-component="footer"></div>
+    <div data-component="back-to-top"></div>
+    <div data-component="project-drawer"></div>
 
-            <hr class="footer-divider">
+    <!-- Three.js (classic script — exposes global THREE for AICore3D) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 
-            <!-- Middle 3 Columns -->
-            <div class="footer-columns">
-                <div>
-                    <p class="footer-col-label">Explore</p>
-                    <div class="footer-nav-links">
-                        <a href="#home">Home</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#skills">Skills</a>
-                        <a href="#about">Experience</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                </div>
-                <div>
-                    <p class="footer-col-label">Currently Building</p>
-                    <p class="footer-project-name">
-                        <span class="footer-pulse-dot"></span>
-                        MySA — Personal AI Assistant
-                    </p>
-                    <p class="footer-company">Witzeal Technologies, India</p>
-                </div>
-                <div>
-                    <p class="footer-col-label">Say Hello</p>
-                    <div class="footer-contact-list">
-                        <span>📧 shivamtyagi8179@gmail.com</span>
-                        <span>📞 +91-7906134199</span>
-                        <span>📍 India 🇮🇳</span>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="footer-divider">
-
-            <!-- Social Icons -->
-            <div class="footer-socials">
-                <a href="https://github.com/shivamtyagi0610" target="_blank" class="footer-social-btn" aria-label="GitHub">GH</a>
-                <a href="https://linkedin.com/in/shivam-tyagi-96973a2b9" target="_blank" class="footer-social-btn" aria-label="LinkedIn">in</a>
-            </div>
-
-            <!-- Bottom Row -->
-            <div class="footer-bottom">
-                <span>© 2025 Shivam Tyagi. Crafted with passion.</span>
-                <span>Designed & Built by Shivam Tyagi</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
-
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
+    <!-- App entry — boots ComponentLoader then initializes every class -->
+    <script type="module" src="assets/js/main.js"></script>
 </body>
+
 </html>

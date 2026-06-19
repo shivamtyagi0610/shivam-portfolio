@@ -1,0 +1,350 @@
+/* ============================================
+   ULTRA-GLASS NAVBAR — Modular Floating Pill
+   ============================================ */
+nav {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1280px;
+    height: 64px;
+    z-index: 1000;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+        0 10px 40px rgba(74, 60, 38, 0.06),
+        0 2px 8px rgba(74, 60, 38, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        inset 0 -1px 0 rgba(200, 169, 110, 0.10);
+    transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+    overflow: hidden;
+}
+
+/* Subtle gold gradient shine that animates across the glass on load */
+.nav-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+        110deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 65%
+    );
+    transform: translateX(-100%);
+    animation: navShineSweep 3.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    opacity: 0.6;
+}
+
+@keyframes navShineSweep {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Soft grain layer */
+nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+}
+
+.nav-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 0 22px;
+    gap: 16px;
+}
+
+nav.scrolled {
+    top: 12px;
+    height: 58px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 14px 44px rgba(74, 60, 38, 0.10),
+        0 4px 14px rgba(74, 60, 38, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 rgba(200, 169, 110, 0.14);
+    border-color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- LOGO ---- */
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.nav-logo:hover {
+    transform: translateY(-1px);
+}
+
+.nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1a1714 0%, #2c2620 100%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow:
+        0 6px 14px rgba(26, 23, 20, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+}
+
+.nav-logo-mark::before {
+    content: 'S';
+    font-family: "DM Serif Display", serif;
+    font-size: 18px;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+.nav-logo-mark-inner {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(197, 160, 89, 0.45), transparent 60%);
+    animation: markShimmer 3.5s ease-in-out infinite;
+}
+
+@keyframes markShimmer {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50%      { opacity: 0.9; transform: scale(1.15); }
+}
+
+.nav-logo-text {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text-color);
+    letter-spacing: -0.3px;
+}
+
+/* ---- NAV LINKS WITH SLIDING PILL ---- */
+.nav-links {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(74, 60, 38, 0.06);
+    border: 1px solid rgba(200, 169, 110, 0.22);
+    border-radius: 100px;
+    box-shadow:
+        inset 0 1px 2px rgba(74, 60, 38, 0.05),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.nav-pill {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: calc(100% - 8px);
+    width: 0;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #1a1714 0%, #2c2620 100%);
+    box-shadow:
+        0 4px 14px rgba(26, 23, 20, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(0);
+    transition:
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.nav-links a {
+    position: relative;
+    z-index: 1;
+    padding: 9px 18px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    color: #6b6258;
+    border-radius: 100px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links a span {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.nav-links a:hover span {
+    transform: translateY(-1px);
+}
+
+.nav-links a.active {
+    color: #f5f0e6;
+}
+
+.nav-links a.active span {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+/* ---- NAV ACTIONS ---- */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.nav-cta {
+    padding: 11px 22px !important;
+    border-radius: 100px !important;
+    font-size: 0.85rem !important;
+    gap: 6px !important;
+}
+
+.nav-cta-arrow {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-cta:hover .nav-cta-arrow {
+    transform: translate(2px, -2px);
+}
+
+/* --- Mobile Hamburger Menu --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 2px;
+    background: var(--text-color);
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ---- Responsive: Tablet / Mobile ---- */
+@media (max-width: 900px) {
+    nav {
+        top: 12px;
+        height: 60px;
+        width: calc(100% - 24px);
+        border-radius: 24px;
+    }
+
+    nav.scrolled {
+        top: 8px;
+        height: 56px;
+    }
+
+    .nav-inner {
+        padding: 0 8px 0 16px;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 84px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        background: rgba(245, 242, 238, 0.92);
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        padding: 18px;
+        gap: 6px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        box-shadow: 0 20px 50px rgba(74, 60, 38, 0.12);
+        align-items: stretch;
+        z-index: 999;
+    }
+
+    .nav-pill {
+        display: none;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        padding: 14px 18px;
+        text-align: left;
+        background: transparent;
+        border-radius: 14px;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-links a.active {
+        background: linear-gradient(135deg, #1a1714 0%, #2c2620 100%);
+        color: #f5f0e6;
+    }
+
+    .nav-links a:hover:not(.active) {
+        background: rgba(200, 169, 110, 0.12);
+        color: var(--text-color);
+    }
+
+    .nav-links.mobile-active {
+        display: flex;
+        animation: navMobileSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes navMobileSlideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-toggle {
+        display: flex;
+        padding: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-actions {
+        display: none;
+    }
+
+    .nav-logo-text {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,317 @@
+/* ============================================
+   CAREER ROADMAP — Animated SVG Path
+   (Preserved from original cascade — markup is no longer in index.html
+    but the rules remain to keep behavior identical to the monolithic file.)
+   ============================================ */
+.roadmap-section {
+    padding: 120px 5%;
+    background-color: var(--bg-color);
+}
+
+.roadmap-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto 0;
+    min-height: 1000px;
+}
+
+.road-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.road-path {
+    fill: none;
+    stroke: rgba(26, 23, 20, 0.08);
+    /* Light road base */
+    stroke-width: 40px;
+    stroke-linecap: round;
+}
+
+.road-dashed {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2px;
+    stroke-dasharray: 10, 15;
+    stroke-linecap: round;
+    opacity: 0.6;
+}
+
+/* Road Stops (Pins) */
+.road-stop {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 350px;
+}
+
+.stop-pin {
+    font-size: 28px;
+    background: #ffffff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(200, 169, 110, 0.3);
+    border: 2px solid var(--accent-color);
+    transition: var(--transition);
+}
+
+.road-stop:hover .stop-pin {
+    transform: scale(1.2) rotate(-10deg);
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+.stop-content {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stop-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+.stop-content h3 {
+    font-size: 1.4rem;
+    margin: 8px 0;
+}
+
+.stop-content p {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    line-height: 1.5;
+}
+
+/* Position Pins along the Path */
+.stop-1 {
+    top: 320px;
+    left: 100px;
+    transform: translateX(-50%);
+    flex-direction: column;
+    text-align: center;
+}
+
+.stop-2 {
+    top: 620px;
+    right: 50px;
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.stop-3 {
+    bottom: 50px;
+    left: 400px;
+    transform: translateX(-50%);
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Road Animation Drawing Effect */
+.roadmap-container.visible .road-dashed {
+    animation: road-dash-scroll 20s linear infinite;
+}
+
+@keyframes road-dash-scroll {
+    to {
+        stroke-dashoffset: -500;
+    }
+}
+
+@media (max-width: 768px) {
+    .roadmap-container {
+        min-height: 1200px;
+    }
+
+    .road-stop {
+        width: 280px;
+    }
+
+    .stop-1 {
+        left: 50%;
+    }
+
+    .stop-2 {
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stop-3 {
+        left: 50%;
+    }
+}
+
+/* ============================================
+   GLOBAL JOURNEY ROAD
+   ============================================ */
+.global-road-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.global-road-svg {
+    opacity: 0.15;
+}
+
+.global-road-path {
+    fill: none;
+    stroke: rgba(200, 169, 110, 0.2);
+    stroke-width: 60px;
+    stroke-linecap: round;
+}
+
+.global-road-dashed {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2px;
+    stroke-dasharray: 12, 20;
+    stroke-linecap: round;
+    opacity: 0.8;
+}
+
+/* Section Marker Pin Styles */
+.section-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.road-pin-global {
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 8px 24px rgba(200, 169, 110, 0.4);
+    animation: pin-float 3s ease-in-out infinite;
+}
+
+@keyframes pin-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .global-road-path {
+        stroke-width: 40px;
+    }
+
+    .road-pin-global {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}
+
+/* ============================================
+   THE JOURNEY ROAD — HIGH VISIBILITY
+   ============================================ */
+.road-background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--bg-color);
+    /* Ensure it doesn't break background */
+}
+
+.global-road-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.road-base {
+    fill: none;
+    stroke: #2c2c2c;
+    /* Dark asphalt grey */
+    stroke-width: 80px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.road-center {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3px;
+    stroke-dasharray: 20, 30;
+    /* Road stripes */
+    stroke-linecap: round;
+    opacity: 0.8;
+}
+
+/* Markers along the global road */
+.road-marker-pin {
+    position: absolute;
+    z-index: 10;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pin-head {
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border: 3px solid var(--accent-color);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pin-head span {
+    transform: rotate(45deg);
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .road-base {
+        stroke-width: 50px;
+    }
+}

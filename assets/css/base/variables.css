@@ -1,0 +1,13 @@
+:root {
+    --bg-color: #f5f2ee;
+    --text-color: #1a1a1a;
+    --accent-color: #c5a059;
+    --accent-soft: #e8ded1;
+    --secondary-text: #5a5a5a;
+    --white: #ffffff;
+    --green: #22c55e;
+    --nav-height: 80px;
+    --nav-height-scrolled: 65px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --border-radius: 24px;
+}

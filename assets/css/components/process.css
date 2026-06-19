@@ -1,0 +1,302 @@
+/* ============================================
+   PROCESS SECTION — Roadmap Route
+   ============================================ */
+.process-intro {
+    font-size: 1.05rem;
+    color: var(--secondary-text);
+    max-width: 620px;
+    margin: 0 0 70px;
+    line-height: 1.6;
+}
+
+.process-route {
+    position: relative;
+    margin-top: 20px;
+    padding: 60px 0 20px;
+}
+
+/* The horizontal track running through node centers */
+.route-track {
+    position: absolute;
+    top: 92px; /* aligned to vertical center of nodes */
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: repeating-linear-gradient(
+        to right,
+        rgba(200, 169, 110, 0.35) 0,
+        rgba(200, 169, 110, 0.35) 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    z-index: 0;
+}
+
+/* Solid gold progress fill that animates from 0 -> 100% on reveal */
+.route-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        to right,
+        var(--accent-color),
+        #d8b878
+    );
+    box-shadow: 0 0 12px rgba(200, 169, 110, 0.5);
+    transition: width 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    border-radius: 2px;
+}
+
+section.visible .route-progress {
+    width: 100%;
+}
+
+/* Traveling pulse dot that loops along the track */
+.route-pulse {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 0 6px rgba(200, 169, 110, 0.18),
+        0 0 16px rgba(200, 169, 110, 0.7);
+    opacity: 0;
+}
+
+section.visible .route-pulse {
+    opacity: 1;
+    animation: routePulseTravel 4.5s linear 3s infinite;
+}
+
+@keyframes routePulseTravel {
+    0%   { left: 0%;   opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+/* Milestones grid */
+.route-milestones {
+    position: relative;
+    z-index: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.milestone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 12px;
+}
+
+/* Numbered node */
+.milestone-node {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    border: 1.5px solid rgba(200, 169, 110, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 6px 18px rgba(74, 60, 38, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.milestone-number {
+    font-size: 1.25rem;
+    color: #6b6258;
+    font-style: italic;
+    transition: color 0.4s ease;
+}
+
+/* Outer pulsing ring on the node */
+.milestone-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent-color);
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+/* When section is visible, nodes light up sequentially */
+section.visible .milestone:nth-child(1) .milestone-node { transition-delay: 0.5s; }
+section.visible .milestone:nth-child(2) .milestone-node { transition-delay: 1.1s; }
+section.visible .milestone:nth-child(3) .milestone-node { transition-delay: 1.7s; }
+section.visible .milestone:nth-child(4) .milestone-node { transition-delay: 2.3s; }
+
+section.visible .milestone .milestone-node {
+    background: linear-gradient(135deg, #1a1714 0%, #2c2620 100%);
+    border-color: var(--accent-color);
+    box-shadow:
+        0 10px 28px rgba(74, 60, 38, 0.18),
+        0 0 0 4px rgba(200, 169, 110, 0.12);
+}
+
+section.visible .milestone .milestone-number {
+    color: var(--accent-color);
+    transition-delay: inherit;
+}
+
+section.visible .milestone:nth-child(1) .milestone-ring { transition-delay: 0.5s; }
+section.visible .milestone:nth-child(2) .milestone-ring { transition-delay: 1.1s; }
+section.visible .milestone:nth-child(3) .milestone-ring { transition-delay: 1.7s; }
+section.visible .milestone:nth-child(4) .milestone-ring { transition-delay: 2.3s; }
+
+section.visible .milestone .milestone-ring {
+    opacity: 0.35;
+    transform: scale(1);
+    animation: milestonePulse 2.4s ease-in-out infinite;
+    animation-delay: inherit;
+}
+
+@keyframes milestonePulse {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50%      { opacity: 0.05; transform: scale(1.3); }
+}
+
+.milestone:hover .milestone-node {
+    transform: translateY(-4px) scale(1.05);
+}
+
+.milestone:hover .milestone-number {
+    color: #d8b878;
+}
+
+/* Milestone label below node */
+.milestone-content {
+    margin-top: 30px;
+    max-width: 240px;
+}
+
+.milestone-stage {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.milestone-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1714;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+}
+
+.milestone-desc {
+    color: #6b6258;
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+/* ---- Responsive: switch to vertical route on tablet/mobile ---- */
+@media (max-width: 1024px) {
+    .process-route {
+        padding: 20px 0;
+    }
+
+    .route-track {
+        top: 52px;        /* padding-top (20) + half node (32) */
+        bottom: 92px;     /* approx height of last milestone content below node center */
+        left: 32px;
+        right: auto;
+        width: 2px;
+        height: auto;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(200, 169, 110, 0.35) 0,
+            rgba(200, 169, 110, 0.35) 6px,
+            transparent 6px,
+            transparent 12px
+        );
+    }
+
+    .route-progress {
+        width: 100%;
+        height: 0%;
+        background: linear-gradient(to bottom, var(--accent-color), #d8b878);
+        transition: height 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+    }
+
+    section.visible .route-progress {
+        width: 100%;
+        height: 100%;
+    }
+
+    .route-pulse {
+        top: 0;
+        left: 50%;
+    }
+
+    section.visible .route-pulse {
+        animation: routePulseTravelV 4.5s linear 3s infinite;
+    }
+
+    @keyframes routePulseTravelV {
+        0%   { top: 0%;   opacity: 0; }
+        8%   { opacity: 1; }
+        92%  { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+
+    .route-milestones {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .milestone {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 24px;
+        padding: 0;
+    }
+
+    .milestone-content {
+        margin-top: 0;
+        max-width: none;
+        flex: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .milestone {
+        gap: 18px;
+    }
+
+    .milestone-node {
+        width: 56px;
+        height: 56px;
+    }
+
+    .milestone-number {
+        font-size: 1.1rem;
+    }
+
+    .milestone-title {
+        font-size: 1.1rem;
+    }
+}

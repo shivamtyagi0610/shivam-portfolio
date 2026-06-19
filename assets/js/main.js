@@ -1,154 +1,62 @@
 /**
- * Shivam Tyagi Portfolio — Main JavaScript
- * Phase 5: Final Polish
+ * Shivam Tyagi Portfolio — Entry Point
+ * -----------------------------------------------------------------------
+ * 1. Fetches every component's HTML fragment via ComponentLoader and
+ *    injects it into the matching <div data-component> placeholder in
+ *    index.html.
+ * 2. Once all fragments are in the DOM, instantiates each behavior class
+ *    and calls init(). Each class owns one feature from the original
+ *    monolithic main.js — logic is identical, only the packaging changed.
  *
- * Features:
- *  1. Hero entrance animations (staggered fade-up)
- *  2. Navbar shrink on scroll
- *  3. Back-to-top button visibility toggle
- *  4. Active nav link highlight on scroll
- *  5. Intersection Observer scroll-reveal for all sections
- *  6. Mobile hamburger menu toggle with X animation
+ * NOTE: Because step 1 uses fetch(), the page MUST be served over HTTP.
+ *       Opening index.html directly via file:// will fail. See README.md.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    initHeroAnimations();
-    initScrollEffects();
-    initScrollReveal();
-    initMobileMenu();
-    initHeroStageCycle();
-});
+import { ComponentLoader } from './core/ComponentLoader.js';
 
-/* ============================================
-   1. Hero Entrance Animations
-   ============================================ */
-function initHeroAnimations() {
-    const content = document.getElementById('heroContent');
-    const visual = document.getElementById('heroVisual');
+import { HeroAnimations }    from './components/hero/HeroAnimations.js';
+import { TypingEffect }      from './components/hero/TypingEffect.js';
+import { HeroStageCycle }    from './components/hero/HeroStageCycle.js';
+import { Hero3DTilt }        from './components/hero/Hero3DTilt.js';
+import { AICore3D }          from './components/hero/AICore3D.js';
 
-    if (content) {
-        setTimeout(() => content.classList.add('fade-up'), 200);
-    }
-    if (visual) {
-        setTimeout(() => visual.classList.add('fade-up'), 500);
-    }
+import { NavPill }           from './components/navbar/NavPill.js';
+import { MobileMenu }        from './components/navbar/MobileMenu.js';
+
+import { ProjectModal }      from './components/projects/ProjectModal.js';
+import { ProjectDrawer }     from './components/project-drawer/ProjectDrawer.js';
+
+import { ScrollEffects }     from './behaviors/ScrollEffects.js';
+import { ScrollReveal }      from './behaviors/ScrollReveal.js';
+import { SpotlightGlow }     from './behaviors/SpotlightGlow.js';
+import { AIShowcase }        from './behaviors/AIShowcase.js';
+import { HighVisibilityRoad } from './behaviors/HighVisibilityRoad.js';
+
+async function boot() {
+    // 1. Pull every component fragment into the shell.
+    const loader = new ComponentLoader();
+    await loader.loadAll();
+
+    // 2. Wire up behaviors that read the newly-injected DOM.
+    //    Order mirrors the original main.js DOMContentLoaded handler.
+    new HeroAnimations().init();
+    new NavPill().init();
+    new ScrollEffects().init();
+    new ScrollReveal().init();
+    new TypingEffect().init();
+    new MobileMenu().init();
+    new HeroStageCycle().init();
+    new SpotlightGlow().init();
+    new AIShowcase().init();
+
+    // Originally each of these registered its own DOMContentLoaded listener.
+    new ProjectModal().init();
+    new ProjectDrawer().init();
+    new Hero3DTilt().init();
+    new AICore3D().init();
+
+    // Originally bound to window 'load' — keep the same timing.
+    window.addEventListener('load', () => new HighVisibilityRoad().init());
 }
 
-/* ============================================
-   2. Scroll Effects — Navbar Shrink, Back-to-Top, Active Link
-   ============================================ */
-function initScrollEffects() {
-    const navbar = document.getElementById('navbar');
-    const backToTop = document.getElementById('backToTop');
-    const sections = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-
-        // Navbar shrink
-        if (navbar) {
-            navbar.classList.toggle('scrolled', scrollY > 50);
-        }
-
-        // Back-to-top visibility
-        if (backToTop) {
-            backToTop.classList.toggle('visible', scrollY > 500);
-        }
-
-        // Active link highlight
-        let currentId = '';
-        sections.forEach(section => {
-            if (scrollY >= section.offsetTop - 200) {
-                const id = section.getAttribute('id');
-                if (id) currentId = id;
-            }
-        });
-
-        navAnchors.forEach(a => {
-            a.classList.remove('active');
-            const href = a.getAttribute('href');
-            if (href && currentId && href === '#' + currentId) {
-                a.classList.add('active');
-            }
-        });
-    });
-}
-
-/* ============================================
-   3. Intersection Observer — Scroll Reveal
-   ============================================ */
-function initScrollReveal() {
-    const observerOptions = {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-}
-
-/* ============================================
-   4. Mobile Hamburger Menu
-   ============================================ */
-function initMobileMenu() {
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const navAnchors = document.querySelectorAll('.nav-links a');
-
-    if (!menuToggle || !navLinks) return;
-
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('mobile-active');
-        menuToggle.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked
-    navAnchors.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('mobile-active');
-            menuToggle.classList.remove('active');
-        });
-    });
-}
-
-/* ============================================
-   5. Hero Stage — Cycling Skill Text
-   ============================================ */
-function initHeroStageCycle() {
-    const cycleEl = document.getElementById('heroCycleText');
-    if (!cycleEl) return;
-
-    const skills = [
-        'Flutter Developer',
-        'Dart Programmer',
-        'Java Engineer',
-        'Cloud Architect',
-        'AI Builder',
-        'MCA Graduate',
-        'Android Developer'
-    ];
-
-    let index = 0;
-
-    setInterval(() => {
-        cycleEl.style.opacity = '0';
-        
-        setTimeout(() => {
-            index = (index + 1) % skills.length;
-            cycleEl.textContent = skills[index];
-            cycleEl.style.opacity = '1';
-        }, 500);
-    }, 2200);
-}
+document.addEventListener('DOMContentLoaded', boot);

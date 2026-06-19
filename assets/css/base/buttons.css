@@ -1,0 +1,46 @@
+.btn-pill {
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-dark {
+    background: linear-gradient(to bottom, #2c2c3e, #1a1a2e);
+    color: var(--white);
+    box-shadow:
+        0 8px 24px rgba(26, 26, 46, 0.35),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.btn-dark:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(to bottom, #3a3a50, #24243a);
+    box-shadow:
+        0 12px 32px rgba(26, 26, 46, 0.45),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.btn-outline {
+    background: linear-gradient(to bottom, #f0f2f8, #e4e8f2);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    color: #1a1714;
+    box-shadow:
+        0 6px 20px rgba(180, 190, 210, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 6px rgba(150, 160, 180, 0.2);
+}
+
+.btn-outline:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 28px rgba(180, 190, 210, 0.55),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 6px rgba(150, 160, 180, 0.25);
+}

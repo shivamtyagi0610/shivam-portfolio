@@ -1,0 +1,53 @@
+<div id="projectModal" class="project-drawer-overlay">
+    <div class="drawer-backdrop" onclick="closeProjectModal()"></div>
+    <div class="project-drawer">
+        <!-- Close Button -->
+        <button class="drawer-close" onclick="closeProjectModal()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Loading Scanner Effect -->
+        <div class="drawer-scanner"></div>
+
+        <div class="drawer-content">
+            <div class="drawer-header" data-reveal-child>
+                <span class="drawer-tag">AI Project Analysis</span>
+                <h2 id="modalTitle" class="serif">Project Title</h2>
+            </div>
+
+            <div class="drawer-main">
+                <!-- Project Media Card -->
+                <div class="drawer-media-wrap" data-reveal-child>
+                    <img id="modalImg" src="" alt="Project Preview">
+                    <div class="media-glow"></div>
+                </div>
+
+                <!-- Project Info -->
+                <div class="drawer-info" data-reveal-child>
+                    <h4 class="info-label">OVERVIEW</h4>
+                    <p id="modalDesc">Detailed technical breakdown...</p>
+                </div>
+
+                <!-- Technical Specs -->
+                <div class="drawer-specs" data-reveal-child>
+                    <h4 class="info-label">TECHNICAL STACK</h4>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <span class="spec-dot"></span>
+                            <span id="modalTech">System Architecture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Row -->
+                <div class="drawer-actions" data-reveal-child>
+                    <a href="#" id="modalGithub" target="_blank" class="btn-pill btn-dark w-full">
+                        <span>↗ Inspect Source Code</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
