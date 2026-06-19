@@ -3,7 +3,7 @@
    ============================================ */
 .skills-marquee-section {
     background-color: #f5f2ee;
-    padding: 52px 0;
+    padding: var(--section-y) 0;
     overflow: hidden;
     position: relative;
     opacity: 1 !important;
@@ -106,4 +106,39 @@
     transform: translateY(-6px) scale(1.04);
     border-color: #c8a96e;
     box-shadow: 0 14px 36px rgba(200, 169, 110, 0.2), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ---- Phone: smaller marquee cards ---- */
+@media (max-width: 640px) {
+    /* vertical padding now comes from the shared --section-y variable */
+
+    .sk-heading {
+        padding: 0 24px;
+        margin-bottom: 26px;
+        font-size: 22px;
+    }
+
+    .sk-track {
+        gap: 9px;
+        padding: 6px 0;
+    }
+
+    .sk-card {
+        gap: 9px;
+        padding: 9px 16px;
+        border-radius: 13px;
+    }
+
+    .sk-icon {
+        font-size: 17px;
+    }
+
+    .sk-label {
+        font-size: 12px;
+    }
+
+    .sk-container::before,
+    .sk-container::after {
+        width: 56px;
+    }
 }

@@ -2,7 +2,7 @@
    GLOBAL SECTION STYLES
    ============================================ */
 section {
-    padding: 100px 5%;
+    padding: var(--section-y) 5%;
     max-width: 1400px;
     margin: 0 auto;
     opacity: 0;

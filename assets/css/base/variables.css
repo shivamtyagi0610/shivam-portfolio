@@ -10,4 +10,13 @@
     --nav-height-scrolled: 65px;
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --border-radius: 24px;
+    /* Consistent vertical spacing for every section (gap between sections) */
+    --section-y: 90px;
+}
+
+/* Tighter, still-equal spacing on phones */
+@media (max-width: 640px) {
+    :root {
+        --section-y: 56px;
+    }
 }

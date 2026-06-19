@@ -162,7 +162,7 @@
 .bento-projects {
     background-color: #f0f2f5;
     /* Light subtle grey bg like image */
-    padding: 120px 5%;
+    padding: var(--section-y) 5%;
 }
 
 .bento-grid {

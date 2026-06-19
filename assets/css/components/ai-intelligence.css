@@ -58,7 +58,7 @@
    ============================================ */
 .ai-showcase {
     background-color: var(--bg-color);
-    padding: 100px 5%;
+    padding: var(--section-y) 5%;
 }
 
 .ai-showcase-grid {
