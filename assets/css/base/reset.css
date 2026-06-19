@@ -7,6 +7,9 @@
 
 html {
     scroll-behavior: smooth;
+    /* clip (not hidden) so it never creates a scroll container that would
+       break position:sticky, but still kills any horizontal overflow */
+    overflow-x: clip;
 }
 
 body {
@@ -14,7 +17,10 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 h1,
