@@ -23,8 +23,8 @@ import { AICore3D }          from './components/hero/AICore3D.js';
 import { NavPill }           from './components/navbar/NavPill.js';
 import { MobileMenu }        from './components/navbar/MobileMenu.js';
 
-import { ProjectModal }      from './components/projects/ProjectModal.js';
 import { ProjectDrawer }     from './components/project-drawer/ProjectDrawer.js';
+import { ProjectsGallery }   from './components/projects-gallery/ProjectsGallery.js';
 
 import { ScrollEffects }     from './behaviors/ScrollEffects.js';
 import { ScrollReveal }      from './behaviors/ScrollReveal.js';
@@ -50,8 +50,10 @@ async function boot() {
     new AIShowcase().init();
 
     // Originally each of these registered its own DOMContentLoaded listener.
-    new ProjectModal().init();
+    // NOTE: the legacy ProjectModal double-bound the same cards as ProjectDrawer
+    // (and threw on a stale selector), so the drawer is now the single owner.
     new ProjectDrawer().init();
+    new ProjectsGallery().init();
     new Hero3DTilt().init();
     new AICore3D().init();
 

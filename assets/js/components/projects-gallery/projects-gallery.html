@@ -1,0 +1,53 @@
+<!-- ============================================================
+     ALL PROJECTS GALLERY
+     Full-screen overlay listing every project from projectsData.
+     Cards are rendered into #galleryGrid by ProjectsGallery.js.
+     ============================================================ -->
+<div id="projectsGallery" class="gallery-overlay">
+    <div class="gallery-backdrop" data-gallery-close></div>
+
+    <div class="gallery-panel">
+        <!-- Header -->
+        <div class="gallery-head">
+            <div>
+                <span class="gallery-tag">Full Portfolio</span>
+                <h2 class="serif">All Projects</h2>
+            </div>
+            <button class="gallery-close" data-gallery-close aria-label="Close gallery">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Filter chips -->
+        <div class="gallery-filters" id="galleryFilters">
+            <button class="filter-chip is-active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="ai">AI / ML</button>
+            <button class="filter-chip" data-filter="flutter">Flutter</button>
+            <button class="filter-chip" data-filter="java">Java</button>
+        </div>
+
+        <!-- Cards grid (populated by JS) -->
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+
+    <!-- Image preview lightbox -->
+    <div id="galleryLightbox" class="gallery-lightbox">
+        <div class="lightbox-backdrop" data-lightbox-close></div>
+        <div class="lightbox-body">
+            <button class="lightbox-close" data-lightbox-close aria-label="Close preview">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="lightbox-frame">
+                <img id="lightboxImg" src="" alt="Project preview">
+            </div>
+            <div class="lightbox-meta">
+                <h3 id="lightboxTitle" class="serif">Project</h3>
+                <div class="lightbox-actions" id="lightboxActions"></div>
+            </div>
+        </div>
+    </div>
+</div>

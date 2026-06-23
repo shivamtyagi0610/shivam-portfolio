@@ -27,7 +27,9 @@ export class ComponentLoader {
         const name = el.getAttribute('data-component');
         const url = `${this.basePath}/${name}/${name}.html`;
 
-        const res = await fetch(url);
+        // Always revalidate so edited fragments never get served from a stale
+        // browser/dev-server cache (otherwise UI changes appear to "not show up").
+        const res = await fetch(url, { cache: 'no-cache' });
         if (!res.ok) {
             throw new Error(`ComponentLoader: failed to load ${url} (${res.status})`);
         }

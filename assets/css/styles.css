@@ -34,5 +34,8 @@
 /* ---- Drawer (modal) ---- */
 @import url("components/project-drawer.css");
 
+/* ---- All-projects gallery overlay + preview lightbox ---- */
+@import url("components/projects-gallery.css");
+
 /* ---- More preserved-but-unused styles ---- */
 @import url("legacy/identity-radial.css");
